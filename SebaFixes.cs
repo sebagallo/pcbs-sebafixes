@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
@@ -15,38 +14,13 @@ namespace SebaFixes
 
         internal void Awake()
         {
-            Debug.Log("Seba Fixes loaded!");
+            Debug.Log("[SF] loaded!");
         }
 
         public SebaFixes()
         {
-            // Harmony.CreateAndPatchAll(typeof(Patches), PluginGuid);
-            // var harmony = new Harmony(PluginGuid);
-            // harmony.PatchAll();
-            // harmony.PatchAll(typeof(ReplacePartObjectiveTestSatisfiedByPatch));
-            // harmony.PatchAll(typeof(Patches));
-
-            // var originalMethod = typeof(ReplacePartObjective).GetMethod("TestSatisfiedBy");
-            // var prefixMethod = typeof(ReplacePartObjectiveTestSatisfiedByPatch).GetMethod("Prefix");
-            // var postfixMethod = typeof(ReplacePartObjectiveTestSatisfiedByPatch).GetMethod("Postfix");
-            //
-            // Debug.Log(originalMethod);
-            // Debug.Log(prefixMethod);
-            // Debug.Log(postfixMethod);
-            //
-            // harmony.Patch(
-            //     originalMethod,
-            //     new HarmonyMethod(prefixMethod),
-            //     new HarmonyMethod(postfixMethod)
-            // );
-            Debug.Log("[SF] Patching Methods...");
             var harmony = new Harmony(PluginGuid);
             harmony.PatchAll(Assembly.GetExecutingAssembly());
-            Debug.Log("[SF] Patched methods: " + harmony.GetPatchedMethods().Count().ToString());
-            foreach (var method in harmony.GetPatchedMethods())
-            {
-                Debug.Log("[SF] Patched: " + method.Name);
-            }
         }
     }
 }
