@@ -3,4 +3,4 @@
 ## Description
 
 Contains the following fixes:
-- No Price check for PSU and MB replacements 
+- No Price check for Air Cooler and MB replacements 
