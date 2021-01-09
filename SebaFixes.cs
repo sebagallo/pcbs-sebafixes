@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using BepInEx;
 using HarmonyLib;
-using UnityEngine;
+using SebaFixes.utils;
 
 namespace SebaFixes
 {
@@ -11,10 +11,11 @@ namespace SebaFixes
         public const string PluginGuid = "com.sebag.pcbs.fixes";
         public const string PluginName = "Seba Fixes";
         public const string PluginVersion = "1.0.0";
-
+        
         internal void Awake()
         {
-            Debug.Log("[SF] loaded!");
+            SFLog.log("loaded!");
+            SFLog.disableLogger();
         }
 
         public SebaFixes()

@@ -64,9 +64,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="patches\PartDesc_MatchForUpgrade_Patch.cs" />
     <Compile Include="patches\ReplacePartObjective_TestSatisfiedBy_Patch.cs" />
     <Compile Include="SebaFixes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\SFLog.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
