@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using UnityEngine;
 
 namespace SebaFixes.patches
 {
@@ -7,12 +8,16 @@ namespace SebaFixes.patches
     {
 
         [HarmonyPostfix]
-        private static bool Postfix(bool __result, PartDesc.Type ___m_partType)
+        private static bool Postfix(bool __result, ComputerSave save, PartDesc.Type ___m_partType)
         {
-            if (___m_partType == PartDesc.Type.MOTHERBOARD)
-                return true;
-            if (___m_partType == PartDesc.Type.AIR_COOLER)
-                return true;
+            // Debug.Log("[SF] TestSatisifiedBy");
+            if (___m_partType == PartDesc.Type.MOTHERBOARD || ___m_partType == PartDesc.Type.AIR_COOLER)
+            {
+                foreach (var partInstance in save.GetAllParts())
+                {
+                    return partInstance.IsActive() && partInstance.GetPart().MatchForUpgrade(___m_partType);
+                }
+            }
             return __result;
         }
         
