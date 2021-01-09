@@ -33,6 +33,8 @@ namespace SebaFixes.patches
             var os = __instance.GetComponentInParent<OS>();
             SFLog.log($"Installing {desc.m_uiName} without rebooting...");
             SFReflect.Run("AddProgramIcon", os, Utils.fixArray(desc));
+            var m_userDescs = SFReflect.Get<List<OSProgramDesc>>("m_userDescs", os);
+            m_userDescs.Add(desc);
             SFReflect.Run("ShowPrograms", __instance);
             SFReflect.Run("BringToFront", os, Utils.fixArray(__instance.GetComponentInParent<WindowFrame>()));
             yield break;

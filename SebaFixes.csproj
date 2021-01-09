@@ -67,6 +67,7 @@
     <Compile Include="patches\AddProgramApp_Install_Patch.cs" />
     <Compile Include="patches\AddProgramApp_Uninstall_Patch.cs" />
     <Compile Include="patches\ComponentDust_ReducePartInstanceDust_Patch.cs" />
+    <Compile Include="patches\ComputerSave_IsUSBDriveInserted_Patch.cs" />
     <Compile Include="patches\PartDesc_MatchForUpgrade_Patch.cs" />
     <Compile Include="patches\ReplacePartObjective_TestSatisfiedBy_Patch.cs" />
     <Compile Include="SebaFixes.cs" />
