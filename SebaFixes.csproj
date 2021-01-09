@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="patches\ComponentDust_ReducePartInstanceDust_Patch.cs" />
     <Compile Include="patches\PartDesc_MatchForUpgrade_Patch.cs" />
     <Compile Include="patches\ReplacePartObjective_TestSatisfiedBy_Patch.cs" />
     <Compile Include="SebaFixes.cs" />

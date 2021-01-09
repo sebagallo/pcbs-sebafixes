@@ -7,6 +7,7 @@ Small mod I developed for pc building simulator to fix some annoyances I found w
 Contains the following fixes:
 - No Price check for Air Cooler, Liquid Cooler and Motherboard replacements 
 - Can replace Air Cooler with Liquid Cooler
+- Faster dust cleaning (x4)
 
 ## Requirements
 
