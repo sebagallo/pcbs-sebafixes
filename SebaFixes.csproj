@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SebaFixes</RootNamespace>
     <AssemblyName>SebaFixes</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
@@ -64,12 +64,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="patches\AddProgramApp_Install_Patch.cs" />
+    <Compile Include="patches\AddProgramApp_Uninstall_Patch.cs" />
     <Compile Include="patches\ComponentDust_ReducePartInstanceDust_Patch.cs" />
     <Compile Include="patches\PartDesc_MatchForUpgrade_Patch.cs" />
     <Compile Include="patches\ReplacePartObjective_TestSatisfiedBy_Patch.cs" />
     <Compile Include="SebaFixes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\Utils.cs" />
     <Compile Include="utils\SFLog.cs" />
+    <Compile Include="utils\SFReflect.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
