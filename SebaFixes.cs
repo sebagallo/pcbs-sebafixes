@@ -10,7 +10,7 @@ namespace SebaFixes
     {
         public const string PluginGuid = "com.sebag.pcbs.fixes";
         public const string PluginName = "Seba Fixes";
-        public const string PluginVersion = "1.2.0";
+        public const string PluginVersion = "1.3.0";
         
         internal void Awake()
         {
