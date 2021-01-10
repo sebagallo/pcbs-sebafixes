@@ -11,11 +11,12 @@ Contains the following fixes/enhancements/QOL:
 - Software installation/removal without rebooting
 - USB drive not needed for OS/software installation
 - PCBay PC Auctions made more profitable (finally you can break even and make a little profit on the side)
+- More PCBay Auctions!
 
-## Planned
-
-- Configuration Menu?
+Each of these options can easily be turned off or on, if you also install the ConfigurationManager Plugin.  
+Alternatively, after the first run a config file will be generated in `BepInEx/config`, there you can easily change the values.
 
 ## Requirements
 
 - [Bepinex](https://github.com/BepInEx/BepInEx/releases) installed
+- [Bepinex.ConfigurationManager](https://github.com/BepInEx/BepInEx.ConfigurationManager/releases) (optional, for in-game config)

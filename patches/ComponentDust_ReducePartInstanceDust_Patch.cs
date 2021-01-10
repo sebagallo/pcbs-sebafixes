@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using SebaFixes.config;
 
 namespace SebaFixes.patches
 {
@@ -8,9 +9,13 @@ namespace SebaFixes.patches
         [HarmonyPrefix]
         private static void Prefix(ref float partReduceAmount)
         {
-            if (partReduceAmount < 0.20f)
+            if (ConfigHandler.Instance.FasterVacuumBool.Value)
             {
-                partReduceAmount = 0.20f;
+                var vacuumSpeed = ConfigHandler.Instance.FasterVacuumValue.Value;
+                if (partReduceAmount < vacuumSpeed)
+                {
+                    partReduceAmount = vacuumSpeed;
+                }   
             }
         }
         

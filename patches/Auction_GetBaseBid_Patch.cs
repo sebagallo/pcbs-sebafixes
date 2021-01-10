@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using SebaFixes.config;
 using SebaFixes.utils;
 using UnityEngine;
 
@@ -10,9 +11,13 @@ namespace SebaFixes.patches
         [HarmonyPostfix]
         public static int Postfix(int __result, int ___m_value, Auction __instance, int day)
         {
+            if (!ConfigHandler.Instance.BetterBidsBool.Value)
+            {
+                return __result;
+            }
             if (__instance.m_computerItem != null)
             {
-                var bonusPercentage = 50;
+                var bonusPercentage = ConfigHandler.Instance.BetterBidsValue.Value;
                 var value = __result * (100 + bonusPercentage) / 100;
                 SFLog.log($"Auction for: {__instance.m_computerItem.GetUIName()} Resale: {___m_value.ToString()} | Original Bid: {__result.ToString()} | Modified Bid: {value.ToString()}");
                 return value;

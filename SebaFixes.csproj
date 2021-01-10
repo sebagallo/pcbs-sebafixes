@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config\ConfigHandler.cs" />
     <Compile Include="patches\AddProgramApp_Install_Patch.cs" />
     <Compile Include="patches\AddProgramApp_Uninstall_Patch.cs" />
     <Compile Include="patches\Auction_GetBaseBid_Patch.cs" />

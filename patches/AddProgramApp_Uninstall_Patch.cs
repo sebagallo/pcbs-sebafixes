@@ -3,6 +3,7 @@ using HarmonyLib;
 using SebaFixes.utils;
 using I2.Loc;
 using System.Collections.Generic;
+using SebaFixes.config;
 
 namespace SebaFixes.patches
 {
@@ -12,12 +13,20 @@ namespace SebaFixes.patches
         [HarmonyPrefix]
         public static bool Prefix()
         {
-            return false;
+            if (ConfigHandler.Instance.NoRebootUnInstallBool.Value)
+            {
+                return false;   
+            }
+            return true;
         }
 
         [HarmonyPostfix]
         public static IEnumerator Postfix(IEnumerator __result, AddProgramApp __instance, OSProgramDesc desc, bool ___m_dayEnded)
         {
+            if (!ConfigHandler.Instance.NoRebootUnInstallBool.Value)
+            {
+                yield return __result;
+            }
             ___m_dayEnded = false;
             SFReflect.Run("ShowProgressDialog", __instance, new[] {(object)ScriptLocalization.AddPrograms.REMOVING, desc});
             yield return SFReflect.Run<IEnumerator>("ShowProgress", __instance, new[] {(object)0f, (object)0.9f, (object)(float)((double) desc.m_removeTime * 0.2f), (object)true});
