@@ -15,7 +15,7 @@ namespace SebaFixes
         internal void Awake()
         {
             SFLog.log("loaded!");
-            // SFLog.disableLogger();
+            SFLog.disableLogger();
         }
 
         public SebaFixes()
