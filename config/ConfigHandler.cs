@@ -1,10 +1,14 @@
-﻿using BepInEx.Configuration;
+﻿using System;
+using System.Reflection;
+using BepInEx.Configuration;
+using UnityEngine;
 
 namespace SebaFixes.config
 {
     public sealed class ConfigHandler
     {
         private ConfigFile _configFile;
+        private bool ShowDebugUI = false;
         private static readonly ConfigHandler instance = new ConfigHandler();
         
         static ConfigHandler()
@@ -47,6 +51,7 @@ namespace SebaFixes.config
         public ConfigEntry<bool> UpgradeMoreComponentMatchBool { get; set; }
         public ConfigEntry<bool> NoRebootInstallBool { get; set; }
         public ConfigEntry<bool> NoRebootUnInstallBool { get; set; }
+        public ConfigEntry<KeyboardShortcut> ShowDebugMenu { get; set; }
         private void Init()
         {
             BetterBidsBool = _configFile.Bind<bool>("PCBay", "Better Bids", true,
@@ -72,8 +77,37 @@ namespace SebaFixes.config
                 new ConfigDescription("Do not require the PC to be reboot after install"));
             NoRebootUnInstallBool = _configFile.Bind<bool>("Software", "UnInstall No Reboot", true,
                 new ConfigDescription("Do not require the PC to be reboot after uninstall"));
+            ShowDebugMenu =
+                _configFile.Bind<KeyboardShortcut>("Debug", "Show Debug Menu", new KeyboardShortcut(KeyCode.F2));
 
         }
-        
+
+        public void Update()
+        {
+            if (ShowDebugMenu.Value.IsDown())
+            {
+                ShowDebugUI = !ShowDebugUI;
+            }
+
+            if (ShowDebugUI)
+            {
+                ShowMouse(ShowDebugUI);
+            }
+        }
+
+        public void OnGUI()
+        {
+            if (ShowDebugUI)
+            {
+                config.DebugMenu.Instance.Show();
+            }
+        }
+
+        private void ShowMouse(bool condition)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = condition;
+        }
+
     }
 }

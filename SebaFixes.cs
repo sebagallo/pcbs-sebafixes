@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using SebaFixes.config;
@@ -11,7 +12,7 @@ namespace SebaFixes
     {
         public const string PluginGuid = "com.sebag.pcbs.fixes";
         public const string PluginName = "Seba Fixes";
-        public const string PluginVersion = "1.4.0";
+        public const string PluginVersion = "1.5.0";
         
         internal void Awake()
         {
@@ -24,6 +25,16 @@ namespace SebaFixes
         {
             var harmony = new Harmony(PluginGuid);
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        private void Update()
+        {
+            ConfigHandler.Instance.Update();
+        }
+
+        protected void OnGUI()
+        {
+            ConfigHandler.Instance.OnGUI();
         }
     }
 }

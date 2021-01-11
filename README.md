@@ -12,6 +12,7 @@ Contains the following fixes/enhancements/QOL:
 - USB drive not needed for OS/software installation
 - PCBay PC Auctions made more profitable (finally you can break even and make a little profit on the side)
 - More PCBay Auctions!
+- Show Debug Panel (F2)
 
 Each of these options can easily be turned off or on, if you also install the ConfigurationManager Plugin.  
 Alternatively, after the first run a config file will be generated in `BepInEx/config`, there you can easily change the values.
