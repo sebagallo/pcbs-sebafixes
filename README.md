@@ -13,6 +13,8 @@ Contains the following fixes/enhancements/QOL:
 - PCBay PC Auctions made more profitable (finally you can break even and make a little profit on the side)
 - More PCBay Auctions!
 - Show Debug Panel (F2)
+- Fast Auctions
+- Free Delivery
 
 Each of these options can easily be turned off or on, if you also install the ConfigurationManager Plugin.  
 Alternatively, after the first run a config file will be generated in `BepInEx/config`, there you can easily change the values.

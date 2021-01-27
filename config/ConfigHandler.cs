@@ -51,6 +51,8 @@ namespace SebaFixes.config
         public ConfigEntry<bool> UpgradeMoreComponentMatchBool { get; set; }
         public ConfigEntry<bool> NoRebootInstallBool { get; set; }
         public ConfigEntry<bool> NoRebootUnInstallBool { get; set; }
+        public ConfigEntry<bool> FastAuctionsBool { get; set; }
+        public ConfigEntry<bool> FreeDeliveryBool { get; set; }
         public ConfigEntry<KeyboardShortcut> ShowDebugMenu { get; set; }
         private void Init()
         {
@@ -62,6 +64,8 @@ namespace SebaFixes.config
                 new ConfigDescription("Get more daily offers"));
             MoreOffersValue = _configFile.Bind<int>("PCBay", "More Daily Offers Number", 7,
                 new ConfigDescription("Define the quantity of the total offers to receive (vanilla: 4)", new AcceptableValueRange<int>(1, 20)));
+            FastAuctionsBool = _configFile.Bind<bool>("PCBay", "Fast Auctions", true,
+                new ConfigDescription("Auctions end in 1 day"));
             FasterVacuumBool = _configFile.Bind<bool>("Misc", "Faster Cleaning", true,
                 new ConfigDescription("Clean the PC components faster"));
             FasterVacuumValue = _configFile.Bind<float>("Misc", "Faster Cleaning Value", 0.20f,
@@ -69,6 +73,8 @@ namespace SebaFixes.config
                     new AcceptableValueRange<float>(0f, 1f)));
             USBInsertedBool = _configFile.Bind<bool>("Misc", "USB Not Required", true,
                 new ConfigDescription("Do not require the USB Drive to be connected to install OS and software"));
+            FreeDeliveryBool = _configFile.Bind<bool>("Misc", "Free Delivery", true,
+                new ConfigDescription("Deliveries from the shop are free"));
             UpgradePriceCheckRemoveBool = _configFile.Bind<bool>("PC Upgrade", "Remove Price Check", true,
                 new ConfigDescription("Remove price check during upgrades for MBs and Air/Liquid Coolers"));
             UpgradeMoreComponentMatchBool = _configFile.Bind<bool>("PC Upgrade", "More Component Matches", true,
