@@ -67,7 +67,7 @@ namespace SebaFixes.config
             FastAuctionsBool = _configFile.Bind<bool>("PCBay", "Fast Auctions", false,
                 new ConfigDescription("Auctions end in 1 day"));
             AuctionGiveKudosBool = _configFile.Bind<bool>("PCBay", "Auction XP", true,
-                new ConfigDescription("Collecting auctions gives kudos (xp)"));
+                new ConfigDescription("Collecting PC auctions gives kudos (xp)"));
             AuctionGiveKudosValue = _configFile.Bind<float>("PCBay", "Auction XP Value", 0.3f,
                 new ConfigDescription("Amount of kudos to give based on auction sale price",
                     new AcceptableValueRange<float>(0f, 2f)));
