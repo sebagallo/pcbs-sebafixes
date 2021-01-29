@@ -56,6 +56,9 @@
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>libs\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>libs\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
@@ -73,6 +76,7 @@
     <Compile Include="patches\AddProgramApp_Uninstall_Patch.cs" />
     <Compile Include="patches\Auction_GetBaseBid_Patch.cs" />
     <Compile Include="patches\Auction_OnDayEnd_Patch.cs" />
+    <Compile Include="patches\CareerStatus_CollectAuction_Patch.cs" />
     <Compile Include="patches\CareerStatus_GenerateTodaysOffers_Patch.cs" />
     <Compile Include="patches\ComponentDust_ReducePartInstanceDust_Patch.cs" />
     <Compile Include="patches\ComputerSave_IsUSBDriveInserted_Patch.cs" />

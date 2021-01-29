@@ -17,8 +17,8 @@ namespace SebaFixes.patches
             }
             if (__instance.m_computerItem != null)
             {
-                var bonusPercentage = ConfigHandler.Instance.BetterBidsValue.Value;
-                var value = __result * (100 + bonusPercentage) / 100;
+                var modifier = ConfigHandler.Instance.BetterBidsValue.Value;
+                var value = __result + (int)(__result * modifier);
                 SFLog.log($"Auction for: {__instance.m_computerItem.GetUIName()} Resale: {___m_value.ToString()} | Original Bid: {__result.ToString()} | Modified Bid: {value.ToString()}");
                 return value;
             }

@@ -10,7 +10,7 @@ namespace SebaFixes.config
         private ConfigFile _configFile;
         private bool ShowDebugUI = false;
         private static readonly ConfigHandler instance = new ConfigHandler();
-        
+
         static ConfigHandler()
         {
         }
@@ -21,27 +21,21 @@ namespace SebaFixes.config
 
         public static ConfigHandler Instance
         {
-            get
-            {
-                return instance;
-            }
+            get { return instance; }
         }
 
         public ConfigFile ConfigFile
         {
-            get
-            {
-                return _configFile;
-            }
+            get { return _configFile; }
             set
             {
                 _configFile = value;
                 Init();
             }
         }
-        
+
         public ConfigEntry<bool> BetterBidsBool { get; set; }
-        public ConfigEntry<int> BetterBidsValue { get; set; }
+        public ConfigEntry<float> BetterBidsValue { get; set; }
         public ConfigEntry<bool> MoreOffersBool { get; set; }
         public ConfigEntry<int> MoreOffersValue { get; set; }
         public ConfigEntry<bool> FasterVacuumBool { get; set; }
@@ -52,23 +46,34 @@ namespace SebaFixes.config
         public ConfigEntry<bool> NoRebootInstallBool { get; set; }
         public ConfigEntry<bool> NoRebootUnInstallBool { get; set; }
         public ConfigEntry<bool> FastAuctionsBool { get; set; }
+        public ConfigEntry<bool> AuctionGiveKudosBool { get; set; }
+        public ConfigEntry<float> AuctionGiveKudosValue { get; set; }
         public ConfigEntry<bool> FreeDeliveryBool { get; set; }
         public ConfigEntry<KeyboardShortcut> ShowDebugMenu { get; set; }
+
         private void Init()
         {
+
             BetterBidsBool = _configFile.Bind<bool>("PCBay", "Better Bids", true,
                 new ConfigDescription("Get better bids for your PC sales"));
-            BetterBidsValue = _configFile.Bind<int>("PCBay", "Better Bids Percent", 50,
-                new ConfigDescription("Define the percent bonus to add to the bids", new AcceptableValueRange<int>(0, 200)));
+            BetterBidsValue = _configFile.Bind<float>("PCBay", "Better Bids Value", 0.5f,
+                new ConfigDescription("Define the percent bonus to add to the bids based on the resale value",
+                    new AcceptableValueRange<float>(0f, 2f)));
             MoreOffersBool = _configFile.Bind<bool>("PCBay", "More Daily Offers", true,
                 new ConfigDescription("Get more daily offers"));
-            MoreOffersValue = _configFile.Bind<int>("PCBay", "More Daily Offers Number", 7,
-                new ConfigDescription("Define the quantity of the total offers to receive (vanilla: 4)", new AcceptableValueRange<int>(1, 20)));
-            FastAuctionsBool = _configFile.Bind<bool>("PCBay", "Fast Auctions", true,
+            MoreOffersValue = _configFile.Bind<int>("PCBay", "More Daily Offers Value", 7,
+                new ConfigDescription("Define the quantity of the total offers to receive (vanilla: 4)",
+                    new AcceptableValueRange<int>(1, 20)));
+            FastAuctionsBool = _configFile.Bind<bool>("PCBay", "Fast Auctions", false,
                 new ConfigDescription("Auctions end in 1 day"));
+            AuctionGiveKudosBool = _configFile.Bind<bool>("PCBay", "Auction XP", true,
+                new ConfigDescription("Collecting auctions gives kudos (xp)"));
+            AuctionGiveKudosValue = _configFile.Bind<float>("PCBay", "Auction XP Value", 0.3f,
+                new ConfigDescription("Amount of kudos to give based on auction sale price",
+                    new AcceptableValueRange<float>(0f, 2f)));
             FasterVacuumBool = _configFile.Bind<bool>("Misc", "Faster Cleaning", true,
                 new ConfigDescription("Clean the PC components faster"));
-            FasterVacuumValue = _configFile.Bind<float>("Misc", "Faster Cleaning Value", 0.20f,
+            FasterVacuumValue = _configFile.Bind<float>("Misc", "Faster Cleaning Value", 0.10f,
                 new ConfigDescription("Speed at which the components get cleanded (vanilla: 0.05)",
                     new AcceptableValueRange<float>(0f, 1f)));
             USBInsertedBool = _configFile.Bind<bool>("Misc", "USB Not Required", true,
@@ -85,7 +90,6 @@ namespace SebaFixes.config
                 new ConfigDescription("Do not require the PC to be reboot after uninstall"));
             ShowDebugMenu =
                 _configFile.Bind<KeyboardShortcut>("Debug", "Show Debug Menu", new KeyboardShortcut(KeyCode.F2));
-
         }
 
         public void Update()
@@ -114,6 +118,5 @@ namespace SebaFixes.config
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = condition;
         }
-
     }
 }
